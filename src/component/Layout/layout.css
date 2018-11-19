@@ -1,19 +1,41 @@
 .ant-layout-header{
-    height: 50px!important;
-    line-height: 50px!important;
-    background: black!important;
+    height: 60px!important;
+    line-height: 60px!important;
     color: #fff;
-    padding-left: 20px!important;
+    background: #2e7df3!important;
+    padding-left: 80px!important;
+    box-shadow:0 0px 9px #275dd6;
 }
 .ant-layout-sider-children{
     text-align: center;
     color: #fff;
 }
 .ant-layout-has-sider{
-    height: calc(100vh - 50px);
+    height: calc(100vh - 60px);
+}
+.ant-layout-sider-collapsed{
+    flex: 0 0 60px!important;
+    max-width: 60px!important;
+    min-width: 60px!important;
+    width: 60px!important;
+}
+.ant-menu-inline-collapsed{
+    width: 60px!important;
+}
+.ant-menu-inline-collapsed > .ant-menu-item{
+    padding: 0 22px !important;
+}
+.ant-menu-vertical .ant-menu-item{
+    margin-top: 0px;
 }
 .ant-menu-item{
     text-align: left;
+}
+.ant-menu.ant-menu-dark .ant-menu-item-selected{
+    background: #001529;
+}
+.ant-menu-dark .ant-menu-item-selected > a{
+    color: #06BC03;
 }
 .ant-layout-content{
     margin: 0!important;

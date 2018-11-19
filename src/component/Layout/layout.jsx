@@ -6,18 +6,21 @@ const { Header, Footer, Sider, Content } = Layout;
 
 class LayoutItem extends React.Component{
     state = {
-        collapsed: false,
+        collapsed: true,
     };
 
-    toggle = () => {
-        this.setState({
-            collapsed: !this.state.collapsed,
-        });
-    }
+    // toggle = () => {
+    //     this.setState({
+    //         collapsed: !this.state.collapsed,
+    //     });
+    // }
     render(){
         return(
             <Layout>
-                <Header style={{ background: '#fff', padding: 0 }}>
+                <Header>
+                    <div style={{width:'60px',height:'60px',background:'#001529',position:'absolute',textAlign:'center',lineHeight:'60px',left:'0',top:'0'}}>
+                        <img src="/images/use.jpg" style={{width:'36px'}} />
+                    </div>
                     Header
                 </Header>
                 <Layout>
@@ -26,13 +29,13 @@ class LayoutItem extends React.Component{
                         collapsible
                         collapsed={this.state.collapsed}
                     >
-                        <div className="icon">
-                            <Icon
-                                className="trigger"
-                                type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'}
-                                onClick={this.toggle}
-                            />
-                        </div>
+                        {/*<div className="icon">*/}
+                            {/*<Icon*/}
+                                {/*className="trigger"*/}
+                                {/*type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'}*/}
+                                {/*onClick={this.toggle}*/}
+                            {/*/>*/}
+                        {/*</div>*/}
                         <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
                             <Menu.Item key="1">
                                 <Link to="/home">
@@ -56,7 +59,7 @@ class LayoutItem extends React.Component{
                     </Sider>
                     <Layout>
                         <Content style={{ margin: '24px 16px', padding: 24, background: '#fff', minHeight: 280 }}>
-                            Content
+                            {this.props.children}
                         </Content>
                     </Layout>
                 </Layout>
