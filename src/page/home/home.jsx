@@ -39,10 +39,6 @@ class Home extends React.Component{
     }
     getOption(){
         let option = {
-            title: {
-                text: '动态数据',
-                subtext: '纯属虚构'
-            },
             tooltip: {
                 trigger: 'axis',
                 axisPointer: {
@@ -51,22 +47,6 @@ class Home extends React.Component{
                         backgroundColor: '#283b56'
                     }
                 }
-            },
-            legend: {
-                data:['最新成交价', '预购队列']
-            },
-            toolbox: {
-                show: true,
-                feature: {
-                    dataView: {readOnly: false},
-                    restore: {},
-                    saveAsImage: {}
-                }
-            },
-            dataZoom: {
-                show: false,
-                start: 0,
-                end: 100
             },
             grid:{
               y2:80,
@@ -86,7 +66,7 @@ class Home extends React.Component{
                     type: 'category',
                     boundaryGap: true,
                     axisLabel:{
-                        height:200,
+                        interval:0,  //确保横坐标的刻度数据都会显示
                         formatter: function (value,index) {
                             // return 'yt' + '\n{warnValue|}'; 
                             return '{value1|yt}'+'\n{'+ value.split(',')[0] +'|}'+'\n你好'
@@ -95,14 +75,14 @@ class Home extends React.Component{
                         rich: {
                             //这里的rich，下面有解释
                             value1: {
-                                height:20,
+                                height:15,
                                 // lineHeight: 20,
                                 align: 'center'
                             },
                             sunny: {
                             //这里的warnValue对应上面的标签名
-                                height: 20,
-                                lineHeight:30,
+                                height: 15,
+                                lineHeight:20,
                                 align: 'center',
                                 backgroundColor: {
                                     image: 
@@ -131,7 +111,7 @@ class Home extends React.Component{
                   
                     },     
                     
-                    data: [ 'sunny,1,2', 'sunny,2,3', 'sunny,3,4','sunny,4,5' ]
+                    data: [ 'sunny,1,2', 'sunny,2,3', 'sunny,3,4','sunny,4,5' ,'sunny,4,5']
                 },
                 {
                     axisLine:{
@@ -146,6 +126,7 @@ class Home extends React.Component{
                     type: 'category',
                     boundaryGap: true,
                     axisLabel:{
+                        interval:0,
                         formatter: function (value,index) {
                             // return 'yt' + '\n{warnValue|}'; 
                             return 'yt'+'\n{'+ value.split(',')[0] +'|}'+'\n你好'
@@ -183,7 +164,7 @@ class Home extends React.Component{
                   
                     },     
                     
-                    data: [ 'sunny,1,2', 'sunny,2,3', 'sunny,3,4','sunny,4,5' ]
+                    data: [ 'sunny,1,2', 'sunny,2,3', 'sunny,3,4','sunny,4,5','sunny,4,5'  ]
                 }
             ],
             yAxis: [
@@ -194,7 +175,7 @@ class Home extends React.Component{
                     name: '价格',
                     max: 30,
                     min: 0,
-                    boundaryGap: [0.2, 0.2]
+                    boundaryGap: [0, 0]
                 },
                 {
                     show:false,
@@ -203,12 +184,13 @@ class Home extends React.Component{
                     name: '预购量',
                     max: 1200,
                     min: 0,
-                    boundaryGap: [0.2, 0.2]
+                    boundaryGap: [0, 0]
                 }
             ],
             series: [
                 {
-                    name:'预购队列',
+                    name:'最高气温',
+                    color:'orange',
                     type:'line',
                     xAxisIndex: 1,
                     yAxisIndex: 1,
@@ -228,8 +210,9 @@ class Home extends React.Component{
                     })()
                 },
                 {
-                    name:'最新成交价',
+                    name:'最低气温',
                     type:'line',
+                    color:'#2196F3',
                     label: {
                         normal: {
                             show: true,
@@ -253,16 +236,15 @@ class Home extends React.Component{
     }
     render(){
         return(
+            // rgba(50,82,119,0.8)
             <div>
                 <ReactEchartsCore
                 echarts={echarts}
+                style={{width:'480px',height:'300px'}}
                 option={this.getOption()}
                 notMerge={true}
                 lazyUpdate={true}
                 theme={"theme_name"}
-                // onChartReady={this.onChartReadyCallback}
-                // onEvents={EventsDict}
-                // opts={} 
                 />
 
             </div>
